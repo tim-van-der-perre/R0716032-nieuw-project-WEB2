@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Trebuchet MS", sans-serif;
+    color: #444;
+    font-size: 1.3rem;
+}
+nav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+nav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+#actual{
+    background-color: rgb(20, 70, 100);
+}
+#actual a{
+    color: #f1f1f1;
+}
+nav a:hover {
+    background-color: #f1f1f1;
+    color: rgb(20, 70, 100);
+}
+#actual a:hover {
+    background-color: #f1f1f1;
+    color: rgb(20, 70, 100);
+}
+main, h1 {
+    margin-left: 20%;
+    padding: 3%;
+}
+main{
+    margin-bottom: 2%;
+}
+h1{
+    background-image: url("../img/valenciaBanner.jpg");
+    font-family: Gabriola;
+    font-size: 3rem;
+    font-weight: 900;
+    height: 20%;
+    color: black;
+}
+main section section img{
+    width: 75%;
+}
+h2{
+    margin: 0 0 3% 0;
+}
+main section p{
+    
+}
+.error{
+    color: crimson;
+}
+.error ul li {
+    list-style-type: none;
+}
+section ul li{
+    list-style-type: none;
+    margin-left: 1rem;
+}
+table{
+    margin-top: 2%
+}
+form{
+    margin:  1rem 0 0 0;
+}
+input, textarea {
+    width: 60%;
+    height: 2rem;
+    padding: 2px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    display: flex;
+    border-radius: 10px;
+}
+input {
+    margin: 0.5% 0 1% 0;
+}
+#knopform{
+    margin-top: 0.5rem;
+}
+input:focus, textarea:focus {
+    background-color: lightblue;
+    border: 3px solid black;
+}
+table {
+    width: 80%;
+    text-align: center
+}
+footer {
+    margin-left: 20%;
+    padding: 1% 3%;
+    text-align: center;
+    background-color: rgb(20, 70, 100);
+    color: white;
+    position: fixed;
+    width: 80%;
+    bottom: 0;
+}
