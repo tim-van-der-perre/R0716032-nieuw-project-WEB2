@@ -57,7 +57,7 @@ public class Servlet extends HttpServlet {
                 destination = verwijderDefinitief(request, response);
                 break;
             case "ProbeerTeUpdaten" :
-                destination = "update.jsp";
+                destination = probeerTeUpdaten(request, response);
                 break;
             case "updateDefinitief" :
                 destination = updateDefinitief(request, response);
@@ -106,7 +106,18 @@ public class Servlet extends HttpServlet {
         request.setAttribute("bezoekers", bezoekersDB.getBezoekers());
         return "overzicht.jsp";
     }
+    private String probeerTeUpdaten(HttpServletRequest request, HttpServletResponse response){
+        String hoeveelMensen = request.getParameter("hoeveelMensen");
+        request.setAttribute("hoeveelMensenPreviousValue", hoeveelMensen);
 
+        String verblijfLengte = request.getParameter("verblijfLengte");
+        request.setAttribute("verblijfLengtePreviousValue", verblijfLengte);
+
+        String startDatum = request.getParameter("startDatum");
+        request.setAttribute("datumPreviousValue", startDatum);
+
+        return "update.jsp";
+    }
 
     private String updateDefinitief(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> errors = new ArrayList<>();
@@ -205,6 +216,7 @@ public class Servlet extends HttpServlet {
         }
         catch (NullPointerException | DateTimeParseException NPE){
             errors.add("Datum is leeg");
+            //is nodig omdat lege string "Text '' could not be parsed at index 0" opgooid door de LocalDate.parse in lijn 202;
         } catch (IllegalArgumentException exc) {
             errors.add(exc.getMessage());
         }
@@ -214,8 +226,11 @@ public class Servlet extends HttpServlet {
         try {
             nieuweBezoeker.setVerblijfLengte(Integer.parseInt(verblijfLengte));
             request.setAttribute("verblijfLengtePreviousValue", verblijfLengte);
-        } catch (IllegalArgumentException exc) {
+        } catch (NumberFormatException NFE){
             errors.add("lengte van verblijf is leeg");
+            //is nodig omdat lege string een exception opgooid door de parseInt in lijn 216
+        } catch (IllegalArgumentException exc) {
+            errors.add(exc.getMessage());
         }
     }
 
@@ -224,8 +239,11 @@ public class Servlet extends HttpServlet {
         try {
             nieuweBezoeker.setHoeveelMensen(Integer.parseInt(hoeveelMensen));
             request.setAttribute("hoeveelMensenPreviousValue", hoeveelMensen);
-        } catch (IllegalArgumentException exc) {
+        } catch (NumberFormatException NFE){
             errors.add("hoeveelheid mensen is leeg");
+            //is nodig omdat lege string een exception opgooid door de parseInt in lijn 229
+        } catch (IllegalArgumentException exc) {
+            errors.add(exc.getMessage());
         }
     }
 

@@ -39,7 +39,7 @@
                             <td>${bezoeker.verblijfLengte}</td>
                             <td>${bezoeker.startDatum}</td>
                             <td><a href="Servlet?command=ProbeerTeVerwijderen&naam=${bezoeker.naam}">verwijder</a> </td>
-                            <td><a href="Servlet?command=ProbeerTeUpdaten&naam=${bezoeker.naam}">update</a> </td>
+                            <td><a href="Servlet?command=ProbeerTeUpdaten&naam=${bezoeker.naam}&hoeveelMensen=${bezoeker.hoeveelMensen}&verblijfLengte=${bezoeker.verblijfLengte}&startDatum=${bezoeker.startDatum}">update</a> </td>
 
                         </tr>
                     </c:forEach>
